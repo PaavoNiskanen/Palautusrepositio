@@ -1,0 +1,50 @@
+@startuml
+
+actor browser
+participant server
+
+note right of browser
+Käyttäjä kirjoittaa muistiinpanon tekstikenttään
+ja painaa "tallenna"-painiketta
+end note
+
+browser -> server : POST /exampleapp/new_note
+activate server
+note right of server
+Palvelin tallentaa uuden muistiinpanon ja ohjaa selaimen takaisin /notes-sivulle
+end note
+server --> browser : HTTP 302 Redirect -> /notes
+deactivate server
+
+browser -> server : GET /exampleapp/notes
+activate server
+server --> browser : HTML document
+deactivate server
+
+browser -> server : GET /exampleapp/main.css
+activate server
+server --> browser : CSS file
+deactivate server
+
+browser -> server : GET /exampleapp/main.js
+activate server
+server --> browser : JavaScript file
+deactivate server
+
+note right of browser
+Selain suorittaa JavaScript-koodin,
+joka hakee muistiinpanot palvelimelta
+end note
+
+browser -> server : GET /exampleapp/data.json
+activate server
+server --> browser : JSON list of notes (incl. new one)
+deactivate server
+
+note right of browser
+Selain suorittaa palautetun JSON-datan
+perusteella muistiinpanojen renderöinnin
+end note
+
+@enduml
+
