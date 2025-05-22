@@ -1,4 +1,5 @@
 sequenceDiagram
+
     participant browser
     participant server
 
@@ -7,31 +8,31 @@ sequenceDiagram
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
     Note right of server: Palvelin tallentaa uuden muistiinpanon ja ohjaa selaimen takaisin /notes-sivulle
-    server-->>browser: HTTP redirect response (302) -> /notes
+    server-->>browser: https://studies.cs.helsinki.fi/exampleapp/notes
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
-    server-->>browser: HTML document
+    server-->>browser: HTML-tiedosto
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
-    server-->>browser: the css file
+    server-->>browser: CSS-tiedosto
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     activate server
-    server-->>browser: the JavaScript file
+    server-->>browser: JavaScript-tiedosto
     deactivate server
 
-    Note right of browser: Selain suorittaa JavaScript-koodin, joka hakee muistiinpanot palvelimelta
+    Note right of browser: Selain suorittaa JavaScript-koodin, joka hakee  muistiinpanot palvelimelta
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: JSON list of notes including the new one
+    server-->>browser: JSON lista päivittyy, jolloin uusi muistiinpano lisätään JSON-dataan 
     deactivate server
 
     Note right of browser: Selain suorittaa palautetun JSON-datan perusteella muistiinpanojen renderöinnin
 
-
+Käyttäjä siis kirjoittaa muistiinpanon (action="exampleapp/new_note") ja selain tekee POST-pyynnön. Palvelin vastaanottaa pyynnön GET:illä ja käsittelee uuden muistiinpanon. Sen jälkeen selain hakee HTML-, CSS- ja JavaScript-tiedostot uudestaan. JavaScript hakee JSON-datan ja selain päivittyy uusien tietojen perusteella.
