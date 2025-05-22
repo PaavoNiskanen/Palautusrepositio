@@ -2,7 +2,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    Note right of browser: Käyttäjä kirjoittaa muistiinpanon tekstikenttään ja painaa "tallenna"-painiketta
+    Note right of browser: Käyttäjä kirjoittaa muistiinpanon tekstikenttään ja painaa "Save"
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
