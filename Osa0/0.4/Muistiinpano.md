@@ -39,4 +39,4 @@ sequenceDiagram
 
     Note right of browser: Selain suorittaa palautetun JSON-datan perusteella muistiinpanojen renderöinnin
 
-Käyttäjä siis kirjoittaa muistiinpanon (action="exampleapp/new_note") ja selain tekee POST-pyynnön. Palvelin vastaanottaa pyynnön GET:illä ja käsittelee uuden muistiinpanon. Sen jälkeen selain hakee HTML-, CSS- ja JavaScript-tiedostot uudestaan. JavaScript hakee JSON-datan ja selain päivittyy uusien tietojen perusteella.
+Käyttäjä siis kirjoittaa muistiinpanon (action="exampleapp/new_note") ja selain tekee POST-pyynnön. Palvelin vastaanottaa pyynnön ja käsittelee uuden muistiinpanon. Sen jälkeen selain hakee HTML-, CSS- ja JavaScript-tiedostot uudestaan GET:in avulla. JavaScript hakee JSON-datan ja selain päivittyy uusien tietojen perusteella.
