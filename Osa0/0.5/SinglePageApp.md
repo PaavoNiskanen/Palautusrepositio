@@ -3,6 +3,8 @@ sequenceDiagram
 
     participant browser
     participant server
+
+    Note right of browser: Selain hakee palvelimesta HTML-, CSS- ja JavaScript-tiedostot ja lataa ne sivustolle. 
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -19,11 +21,11 @@ sequenceDiagram
     server-->>browser: JavaScripti-tiedosto
     deactivate server
     
-    Note right of browser: Palvelin alkaa suorittamaan JavaScripti koodia, joka JSON-datan selaimesta
+    Note right of browser: Selain alkaa suorittamaan JavaScripti koodia, joka hakee JSON-datan palvelimesta ja lataa sen sivustolle. 
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{ "content": "", "date": "" }, ... ]
+    server-->>browser: [{ "content": "", "date": "" }, ... ] 
     deactivate server    
 
-    Note right of browser: Palvelin suorittaa komennon, joka lataa JSON-datan muistiinpanot selaimeen
+    Note right of browser: Selain suorittaa komennon, joka lataa JSON-datan muistiinpanot palvelimeen. Tämän jälkeen sivusto on valmis. 
