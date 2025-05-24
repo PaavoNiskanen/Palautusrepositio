@@ -3,7 +3,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    Note right of browser: Selain hakee palvelimesta HTML-, CSS- ja JavaScript-tiedostot ja lataa ne sivustolle. 
+    Note right of browser: Selain hakee palvelimesta HTML dokumentin, CSS- ja JavaScript-tiedoston ja lataa ne sivustolle. 
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
