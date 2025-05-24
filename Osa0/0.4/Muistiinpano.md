@@ -5,12 +5,6 @@ sequenceDiagram
 
     Note right of browser: Käyttäjä kirjoittaa muistiinpanon tekstikenttään ja painaa "Save"
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    Note right of server: Palvelin tallentaa uuden muistiinpanon ja ohjaa selaimen takaisin /notes-sivulle
-    server-->>browser: https://studies.cs.helsinki.fi/exampleapp/notes
-    deactivate server
-
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
     server-->>browser: HTML-tiedosto
