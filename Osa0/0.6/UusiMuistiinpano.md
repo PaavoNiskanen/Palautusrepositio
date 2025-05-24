@@ -1,13 +1,21 @@
 sequenceDiagram
-
+    
     participant browser
     participant server
 
     Note right of browser: Käyttäjä kirjoittaa muistiinpanon tekstikenttään ja painaa "Save"
     
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/notes_form
     activate server
-    server-->>browser: HTML dokumentti
+    Note right of server: Palvelin tallentaa uuden muistiinpanon ja ohjaa selaimen takaisin /notes-sivulle
+    server-->>browser: HTTP vastaus -> /notes
+    deactivate server
+
+    Note right of browser: Selain uudelleen lataa HTML-, CSS- ja JavaScript-tiedoston. 
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: HTML-tiedosto
     deactivate server
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
