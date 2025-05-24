@@ -11,11 +11,11 @@ sequenceDiagram
     server-->>browser: HTTP vastaus -> /notes
     deactivate server
 
-    Note right of browser: Selain uudelleen lataa HTML-, CSS- ja JavaScript-tiedoston. 
+    Note right of browser: Selain uudelleen lataa HTML dokumentin, CSS- ja JavaScript-tiedoston. 
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
-    server-->>browser: HTML-tiedosto
+    server-->>browser: HTML dokumentti
     deactivate server
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
