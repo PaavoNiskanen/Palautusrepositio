@@ -7,12 +7,14 @@ sequenceDiagram
     participant JavaScript
     participant DOM
 
-    Käyttäjä->>Selain: Siirry osoitteeseen /spa
-    Selain->>Palvelin: HTTP GET /spa
-    Palvelin-->>Selain: HTML-tiedosto (SPA-runko)
-    Selain->>Palvelin: GET app.js ja muut resurssit
-    Palvelin-->>Selain: JavaScript, CSS, ym.
-    Selain->>JavaScript: Aja JavaScript
-    JavaScript->>Palvelin: GET /notes (API-kutsu)
+    Käyttäjä->>Selain: Siirry osoitteeseen https://studies.cs.helsinki.fi/exampleapp/spa
+    Selain->>Palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa (Single-page application)
+    Palvelin-->>Selain: HTML-tiedosto 
+    Selain->>Palvelin: GET https://studies.cs.helsinki.fi/exampleapp/spa.js ja https://studies.cs.helsinki.fi/exampleapp/main.css
+    Palvelin-->>Selain: Palauttaa JavaScript ja CSS
+    Selain->>JavaScript: Suorita Javascripti 
+    JavaScript->>Palvelin: GET notes (etsii kaikki muistiinpanot JSON-datasta)
     Palvelin-->>JavaScript: JSON-data (muistiinpanot)
     JavaScript->>DOM: Päivitä näkymä muistiinpanoilla
+    
+Selain pyytää ja lataa ensin HTML-sivun /spa. Sen jälkeen haetaan ja ajetaan JavaScripti. Sitten se tekee erillisen kutsun, joka hakee muistiinpanot JSON-datasta. Käyttöliittymä (DOM) päivittyy JavaScriptin avulla ilman uudelleenlatausta.
