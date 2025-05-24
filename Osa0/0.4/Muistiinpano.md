@@ -13,7 +13,7 @@ sequenceDiagram
     server-->>browser: HTTP kertoo vastauksen -> /notes
     deactivate server
 
-    Note right of server: Palvelin päivittää muut sivuston osat
+    Note right of server: Selain päivittää muut sivuston osat
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -30,7 +30,7 @@ sequenceDiagram
     server-->>browser: JavaScript-tiedosto
     deactivate server
 
-    Note right of browser: Selain suorittaa JavaScript-koodin, joka hakee  muistiinpanot palvelimelta
+    Note right of browser: Selain suorittaa JavaScript-koodin, joka hakee  muistiinpanot.
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
